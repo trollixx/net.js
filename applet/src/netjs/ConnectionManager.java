@@ -143,6 +143,7 @@ public class ConnectionManager implements Runnable {
                         } else {
                             // TODO: Pass byte[] to JS
                             applet.jsEmit(id, "data", new Object[]{new String(bb.array(), 0, bn, "UTF-8")});
+                            bb.flip();
                         }
                     } else if (key.isWritable()) {
                         logger.log("key.isWritable()");
