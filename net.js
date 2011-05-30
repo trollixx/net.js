@@ -361,7 +361,9 @@ if ('jQuery' in this) jQuery.net = this.net;
 
         this.host = host || (window.location.hostname === '' ? 'localhost' : window.location.hostname);
 
-        this.on('connect', callback);
+        if (callback) {
+            this.on('connect', callback);
+        }
 
         this._id = net._applet.connect(this.host, this.port);
         net._sockets[this._id] = this;
