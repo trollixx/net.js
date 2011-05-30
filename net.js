@@ -354,22 +354,16 @@ if ('jQuery' in this) jQuery.net = this.net;
     Socket.prototype.connect = function(port, host, callback) {
         this.port = port || '80';
 
-        /// XXX: Maybe there's a way to pass Number to Java?
-        if (typeof this.port === 'number') {
+        /// XXX: This was needed for IcedTea
+        /*if (typeof this.port === 'number') {
             this.port = this.port.toString();
-        }
+        }*/
 
         this.host = host || (window.location.hostname === '' ? 'localhost' : window.location.hostname);
 
-        /// XXX: Maybe remove `typeof callback === 'function'` part...
-        if (callback && typeof callback === 'function') {
-            this.on('connect', callback);
-        }
-
-        console.log('>>> connect: host='+this.host+':'+this.port);
+        this.on('connect', callback);
 
         this._id = net._applet.connect(this.host, this.port);
-        console.log('id=' + this._id);
         net._sockets[this._id] = this;
     };
 
