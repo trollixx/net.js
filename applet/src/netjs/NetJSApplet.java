@@ -6,14 +6,9 @@
 package netjs;
 
 import java.io.*;
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import netscape.javascript.*;
-import sun.plugin2.liveconnect.BrowserSideObject;
-import sun.plugin2.main.client.MessagePassingJSObject;
-import sun.plugin2.message.Serializer;
 
 /**
  *

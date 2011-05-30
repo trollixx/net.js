@@ -77,6 +77,14 @@ public class ConnectionManager implements Runnable {
             return false;
         }
         
+        // TODO: Implement internal queue and handle OP_WRITE
+        try {
+            channels.get(id).write(ByteBuffer.wrap(data));
+        } catch (IOException ioe) {
+            logger.logException(ioe);
+            return false;
+        }
+        
         return true;
     }
 
@@ -133,9 +141,8 @@ public class ConnectionManager implements Runnable {
                             key.cancel();
                             applet.jsEmit(id, "close");
                         } else {
-                            logger.log("bb.hasArray()="+bb.hasArray());
-                            logger.log(new String(bb.array(), "UTF-8"));
-                            applet.jsEmit(id, "data", new Object[]{new String(bb.array(), "UTF-8")});
+                            // TODO: Pass byte[] to JS
+                            applet.jsEmit(id, "data", new Object[]{new String(bb.array(), 0, bn, "UTF-8")});
                         }
                     } else if (key.isWritable()) {
                         logger.log("key.isWritable()");
