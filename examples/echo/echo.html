@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>Net.JS Echo Client Example</title>
+    <script type="text/javascript" src="../../net.js"></script>
+    <script type="text/javascript" src="echo.js"></script>
+</head>
+<body>
+    <div>
+        <input type="button" value="Load Net.JS" onclick="load();" />
+        <br /><br />
+
+        <label for="send_text">Text to send:</label>
+        <input type="text" value="" id="send_text" />
+        <input type="button" value="Send" id="send" onclick="send();" disabled="disabled" />
+        <br/>
+
+        <label for="reply_text">Reply:</label>
+        <input type="text" value="" id="reply_text" disabled="disabled" />
+
+    </div>
+</body>
+</html>
